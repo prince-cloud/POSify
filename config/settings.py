@@ -431,7 +431,7 @@ CELERY_TASK_ALWAYS_EAGER = as_bool(
 
 UNFOLD = {
     "SITE_TITLE": "BACK OFFICE",
-    "SITE_HEADER": "PAPERLESS BACK OFFICE ",
+    "SITE_HEADER": "POSify",
     "COLORS": {
         "font": {
             "subtle-light": "107 114 128",

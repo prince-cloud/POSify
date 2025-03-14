@@ -5,7 +5,7 @@ billiard==4.2.1
 cachetools==5.5.0
 celery==5.4.0
 certifi==2022.12.7
-cffi==1.15.1
+cffi==1.17.1
 cfgv==3.4.0
 charset-normalizer==3.0.1
 click==8.1.7
@@ -38,6 +38,7 @@ djangorestframework-simplejwt==5.3.1
 docker==7.1.0
 drf-spectacular==0.27.2
 drf-spectacular-sidecar==2024.11.1
+filelock==3.18.0
 gunicorn==23.0.0
 httplib2==0.22.0
 identify==2.6.2

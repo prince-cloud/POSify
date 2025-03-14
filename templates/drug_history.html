@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<br>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <form class="header-search-form" method="GET" action="{% url 'drug_history' %}">
+
+                <div class="row">   
+                    <div class="col-md-10">
+                        <input id="input" class="form-control" name="q" type="text" placeholder="Search ....">
+                    </div>
+                    <div class="col-md-2">
+                        <input type="submit" value="Search" class="btn btn-info w-100" style="background-color: rgb(0, 192,192)">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="container">
+    <div class="row">
+        {% if product_sold %}
+        <div class="col-md-4 bg-info p-2 mr-3 text-white text-center shadow">
+            <h6>Total Quantity Sold : <span class="text-black"> <strong style="font-size: 20px;">
+                        {{ qty }} </strong> </span></h6>
+        </div>
+        <div class="col-md-4 bg-success p-2 text-white text-center shadow">
+            <h6>Total Amount : Ghc <span class="text-black"> <strong style="font-size: 20px;">
+                        {{ product_sold }} </strong> </span>
+            </h6>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<div class="container pt-4">
+    <div class="row ">
+        <div class="col-12">
+            <table class="table shadow  table-hover table-striped white-bg">
+                <thead class="bg-dark text-white">
+                    <trz>
+                        <th> Product </th>
+                        <th> Date </th>
+                        <th> Qty Sold </th>
+                        <th> Total amount </th>
+                        <th> Available quantity </th>
+                        <th> Seller </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in getDrug %}
+                    <tr>
+                        <td> {{ item.product }} </td>
+                        <td> {{ item.date }} </td>
+                        <td> {{ item.quantity }} </td>
+                        <td> Ghc {{ item.total_amount }} </td>
+                        <td> {{ item.qty }} </td>
+                        <td> {{ item.seller.username }} </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7">
+                            <h4>No item found </h4>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

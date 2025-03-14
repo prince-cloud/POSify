@@ -6,25 +6,27 @@ from .forms import CustomUserCreationForm, CustomUserChangeForm
 from .models import CustomUser
 
 
-class CustomUserAdmin(UserAdmin):
-    add_form = CustomUserCreationForm
-    form = CustomUserChangeForm
-    model = CustomUser
+from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
+from . import models
+from unfold.admin import ModelAdmin
+from unfold.forms import AdminPasswordChangeForm, UserChangeForm, UserCreationForm
+
+
+@admin.register(models.CustomUser)
+class UserAdmin(UserAdmin, ModelAdmin):
+    form = UserChangeForm
+    add_form = UserCreationForm
+    change_password_form = AdminPasswordChangeForm
     list_display = [
+        "id",
+        "first_name",
+        "last_name",
         "email",
-        "username",
+        "is_active",
+        "is_staff",
+        "is_superuser",
     ]
-
-    # Explicitly define add_fieldsets to prevent unexpected fields
-    add_fieldsets = (
-        (
-            None,
-            {
-                "classes": ("wide",),
-                "fields": ("username", "email", "password1", "password2"),
-            },
-        ),
-    )
-
-
-admin.site.register(CustomUser, CustomUserAdmin)
+    fieldsets = [
+        *UserAdmin.fieldsets,
+    ]

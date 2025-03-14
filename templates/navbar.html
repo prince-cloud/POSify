@@ -1,0 +1,35 @@
+
+        <nav class="navbar navbar-expand-lg navbar-light py-3 " style="background-color:rgb(6, 43, 43);">
+            <div class="container">
+                <a class="navbar-brand text-center" href="/" style="color: white;"> <B> 
+                    OGIDI GIDEON STORE
+                    </B></a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    {% if request.user.is_authenticated %}
+                    <ul class="navbar-nav ">
+
+                       
+
+                        <li class="nav-item ">
+                            <a class="nav-link text-white"> 
+                                <b> 
+                                {{ request.user.get_full_name }} ({{ request.user }})
+                                </b> 
+                            </a>
+                        </li>
+
+                       
+                        
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
