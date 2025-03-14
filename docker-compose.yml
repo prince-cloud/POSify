@@ -8,7 +8,7 @@ services:
       - ./nginx/:/etc/nginx/conf.d
 
     ports:
-      - "8077:80"
+      - "8015:80"
     deploy:
       resources:
         limits:
